@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,23 +8,20 @@ public class GameManager : MonoBehaviour
 {
 
     private static int score = 0;
+    private static int restartScore = 0;
     private static int lives = 3;
+    private static int restartlives = 0;
 
     void Start()
     {
         score = 0;
+        restartScore = score;
+        restartlives = lives;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public static void IncrementScore(int val)
     {
-        
-    }
-
-
-    public static void IncrementScore()
-    {
-        score++;
+        score += val;
     }
 
     public static void SetLives(int nLives)
@@ -40,6 +38,22 @@ public class GameManager : MonoBehaviour
     public static int GetScore()
     {
         return score;
+    }
+    
+    public static void setScore(int scoreNew)
+    {
+        score = scoreNew;
+    }
+    
+    public static void setLives(int livesNew)
+    {
+        lives = livesNew;
+    }
+    
+    public static void resetStats()
+    {
+        score = restartScore;
+        lives = restartlives;
     }
 
 
