@@ -11,9 +11,6 @@ public class HudManager : MonoBehaviour
     public Text LevelLabel;
     public Text TimerLabel;
 
-    //public List<Image> LivesIcons = new List<Image>();
-    //public Image Icon;
-
     public BallMovementTest PlayerInformation;
 
     float currentTime = 0.0f;

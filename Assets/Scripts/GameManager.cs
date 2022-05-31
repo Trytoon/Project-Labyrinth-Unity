@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,13 +9,14 @@ public class GameManager : MonoBehaviour
     private static int score = 0;
     private static int restartScore = 0;
     private static int lives = 3;
-    private static int restartlives = 0;
+    private static int restartlives = 3;
 
     void Start()
     {
         score = 0;
-        restartScore = score;
-        restartlives = lives;
+        PlayerPrefs.SetInt("score", score);
+        PlayerPrefs.SetInt("lives", lives);
+        
     }
     
     public static void IncrementScore(int val)
@@ -52,14 +52,15 @@ public class GameManager : MonoBehaviour
     
     public static void resetStats()
     {
-        score = restartScore;
-        lives = restartlives;
+        score = PlayerPrefs.GetInt("score");
+       
+        lives = PlayerPrefs.GetInt("lives", lives);
     }
 
 
-    public static char GetSceneName()
+    public static int GetSceneName()
     {
-        string name = SceneManager.GetActiveScene().name;
-        return name[name.Length-1];
+        
+        return SceneManager.GetActiveScene().buildIndex;
     }
 }

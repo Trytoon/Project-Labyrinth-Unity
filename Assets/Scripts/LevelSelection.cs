@@ -26,6 +26,7 @@ public class LevelSelection : MonoBehaviour
         string levelID = GameObject.Find(b.name).GetComponentInChildren<Text>().text;
         int sceneID = int.Parse(levelID);
         SceneManager.LoadScene(sceneID);
+        
     }
 
 }
